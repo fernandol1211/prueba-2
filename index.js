@@ -13,6 +13,21 @@ try{
   console.log(e);
 }
 
+// datos de base de datos
+// [Object: null prototype] {
+//   ':_id': '6745ff8f74c1aab5b34f143f',
+//   description: '',
+//   duration: '',
+//   date: ''
+// }
+// [Object: null prototype] {
+//   ':_id': '6745ff8f74c1aab5b34f143f',
+//   description: '',
+//   duration: '',
+//   date: ''
+// }
+
+
 // Mongoose set up coneccion
 //-----------------------------------------------------------------------------
 mongoose.connect(process.env.MONGO_URI, { })
