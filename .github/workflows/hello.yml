@@ -3,7 +3,7 @@ name: Prueba de Hello World
 on:
   push:
     branches:
-      - main
+      - develop
 
 jobs:
   hello_world:
