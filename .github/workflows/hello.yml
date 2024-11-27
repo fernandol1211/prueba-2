@@ -1,4 +1,4 @@
-name: Prueba de hellow world
+name: Prueba de Hello World
 
 on:
   push:
@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: Echo the message
         run: |
-          echo "hellow fernando"
+          echo "hello fernando"
