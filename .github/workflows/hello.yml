@@ -5,10 +5,22 @@ on:
     branches:
       - develop
 
+# jobs:
+#   hello_world:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Echo the message
+#         run: |
+#           echo "heeeeello fernando"
 jobs:
-  hello_world:
+  run_project:
     runs-on: ubuntu-latest
+
     steps:
+      #paso 1 configurar el repositorio
+      - name: Checkout del código
+        uses: actions/checkout@v3
+
       - name: Echo the message
         run: |
           echo "heeeeello fernando"
