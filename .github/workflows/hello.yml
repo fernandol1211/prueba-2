@@ -20,6 +20,17 @@ jobs:
       #paso 1 configurar el repositorio
       - name: Checkout del código
         uses: actions/checkout@v3
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Proyect
+        run: npm start
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
 
       - name: Echo the message
         run: |
