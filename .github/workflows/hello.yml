@@ -23,14 +23,17 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+
       - name: Install dependencies
         run: npm install
 
       - name: Run Proyect
-        run: npm start
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+        run: |
+          npm start &
+          sleep 10 # Deja tiempo para que se inicie el servidor
+          curl -Is http://localhost:3000 | head -n 1
 
       - name: Echo the message
         run: |
