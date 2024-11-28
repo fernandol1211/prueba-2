@@ -1,27 +1,18 @@
-name: Prueba de Hello World
+name: Hello World Test
 
 on:
   push:
     branches:
       - develop
 
-# jobs:
-#   hello_world:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Echo the message
-#         run: |
-#           echo "heeeeello fernando"
 jobs:
   run_project:
     runs-on: ubuntu-latest
 
     steps:
-      #paso 1 configurar el repositorio
+      #step 1 configure the repository
       - name: Checkout del código
         uses: actions/checkout@v3
-        with:
-          node-version: "20"
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -37,4 +28,4 @@ jobs:
 
       - name: Echo the message
         run: |
-          echo "heeee ello fernando"
+          echo "Heeeeello fernando"
