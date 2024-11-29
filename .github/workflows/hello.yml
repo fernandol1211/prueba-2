@@ -1,31 +1,46 @@
-name: Hello World Test
+# name: Hello World Test
+
+# on:
+#   push:
+#     branches:
+#       - develop
+
+# jobs:
+#   run_project:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       #step 1 configure the repository
+#       - name: Checkout del código
+#         uses: actions/checkout@v3
+
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v3
+
+#       - name: Install dependencies
+#         run: npm install
+
+#       - name: Run Proyect
+#         run: |
+#           npm start &
+#           sleep 10 # Deja tiempo para que se inicie el servidor
+#           curl -Is http://localhost:3000 | head -n 1
+
+#       - name: Echo the message
+#         run: |
+#           echo "Heeeeello fernando"
+
+name: Check that image builds
 
 on:
-  push:
-    branches:
-      - develop
+  pull_request:
 
 jobs:
-  run_project:
+  test-image:
     runs-on: ubuntu-latest
-
     steps:
-      #step 1 configure the repository
-      - name: Checkout del código
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run Proyect
-        run: |
-          npm start &
-          sleep 10 # Deja tiempo para que se inicie el servidor
-          curl -Is http://localhost:3000 | head -n 1
-
-      - name: Echo the message
-        run: |
-          echo "Heeeeello fernando"
+      - name: Check that the image builds
+        run: docker build . --file Dockerfile
