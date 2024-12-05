@@ -1,19 +1,4 @@
-# name: Prueba de Hello World
-
-# on:
-#   push:
-#     branches:
-#       - main
-
-# jobs:
-#   hello_world:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Echo the message
-#         run: |
-#           echo "hello fernando"
-
-name: Install and run the project
+name: Prueba de Hello World
 
 on:
   push:
@@ -21,22 +6,9 @@ on:
       - main
 
 jobs:
-  build:
+  hello_world:
     runs-on: ubuntu-latest
-    environment: develop
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "20"
-
-      - name: Install AWS CDK
+      - name: Echo the message
         run: |
-          npm install -g aws-cdk@latest
-
-      - name: Debug AWS Profile
-        run: echo "AWS_PROFILE=${{ secrets.CODIGO }}"
+          echo "hello fernando"
