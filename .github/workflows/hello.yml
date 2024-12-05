@@ -47,22 +47,30 @@
 #       - name: Check that the image builds
 #         run: docker build . --file Dockerfile
 
-name: Build
-on: push
+name: Install and run the project
+
+on:
+  push:
+    branches:
+      - develop
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: develop
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Build with logs
-        run: |
-          mkdir ${{ runner.temp }}/build_logs
-          echo "Logs from building" > ${{ runner.temp }}/build_logs/build.logs
-          exit 1
-      - name: Upload logs on fail
-        if: ${{ failure() }}
-        uses: actions/upload-artifact@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          name: Build failure logs
-          path: ${{ runner.temp }}/build_logs
+          node-version: "20"
+
+      - name: Install AWS CDK
+        run: |
+          npm install -g aws-cdk@latest
+
+      - name: Debug AWS Profile
+        run: echo "AWS_PROFILE=${{ secrets.GITHUB_TOKEN }}"
