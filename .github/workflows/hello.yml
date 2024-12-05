@@ -73,4 +73,4 @@ jobs:
           npm install -g aws-cdk@latest
 
       - name: Debug AWS Profile
-        run: echo "AWS_PROFILE=${{ env.AWS_PROFILE }}"
+        run: echo "AWS_PROFILE=${{ secrets.AWS_PROFILE }}"
